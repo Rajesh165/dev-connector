@@ -4,10 +4,11 @@
   "description": "simple mern stack application",
   "main": "server",
   "scripts": {
-    "start": "node serve",
-    "serve": "nodemon server",
-    "client": "yarn start --prefix client",
-    "dev": "concurrently \"yarn run start\" \"yarn run client\"",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "cd client && npm start",
+    "backend": "cd server && nodemon server.js",
+    "dev": "concurrently \"npm run backend\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "RAJESH KUMAR",
