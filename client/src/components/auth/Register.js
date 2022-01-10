@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Button,
-  Col,
   Container,
   Form,
   FormGroup,
@@ -39,59 +38,49 @@ const Register = ({ setAlert, register, auth }) => {
       </p>
       <Form className="form" onSubmit={(e) => onsubmit(e)}>
         <FormGroup row className="justify-content-md-center">
-          <Col md={8}>
-            <Input
-              onChange={(e) => onchange(e)}
-              value={name}
-              type="text"
-              placeholder="Name"
-              name="name"
-            />
-          </Col>
+          <Input
+            onChange={(e) => onchange(e)}
+            value={name}
+            type="text"
+            placeholder="Name"
+            name="name"
+          />
         </FormGroup>
         <FormGroup row className="justify-content-md-center">
-          <Col md={8}>
-            <Input
-              onChange={(e) => onchange(e)}
-              value={email}
-              type="email"
-              placeholder="Email Address"
-              name="email"
-            />
-            <FormText>
-              This site uses Gravatar so if you want a profile image, use a
-              Gravatar email
-            </FormText>
-          </Col>
+          <Input
+            onChange={(e) => onchange(e)}
+            value={email}
+            type="email"
+            placeholder="Email Address"
+            name="email"
+          />
+          <FormText>
+            This site uses Gravatar so if you want a profile image, use a
+            Gravatar email
+          </FormText>
         </FormGroup>
         <FormGroup row className="justify-content-md-center">
-          <Col md={8}>
-            <Input
-              onChange={(e) => onchange(e)}
-              value={password}
-              type="password"
-              placeholder="Password"
-              name="password"
-            />
-          </Col>
+          <Input
+            onChange={(e) => onchange(e)}
+            value={password}
+            type="password"
+            placeholder="Password"
+            name="password"
+          />
         </FormGroup>
         <FormGroup row className="justify-content-md-center">
-          <Col md={8}>
-            <Input
-              onChange={(e) => onchange(e)}
-              value={password2}
-              type="password"
-              placeholder="Confirm Password"
-              name="password2"
-            />
-          </Col>
+          <Input
+            onChange={(e) => onchange(e)}
+            value={password2}
+            type="password"
+            placeholder="Confirm Password"
+            name="password2"
+          />
         </FormGroup>
         <FormGroup row className="justify-content-md-center">
-          <Col md={8}>
-            <Button type="submit" color="primary">
-              Register
-            </Button>
-          </Col>
+          <Button type="submit" color="primary">
+            Register
+          </Button>
         </FormGroup>
       </Form>
       <p className="my-1">

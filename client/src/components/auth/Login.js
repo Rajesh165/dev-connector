@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { Button, Col, Container, Form, FormGroup, Input } from "reactstrap";
+import { Button, Container, Form, FormGroup, Input } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
 import PropTypes from "prop-types";
@@ -33,33 +33,27 @@ const Login = ({ login, auth }) => {
       </p>
       <Form onSubmit={(e) => onsubmit(e)}>
         <FormGroup row className="justify-content-md-center">
-          <Col md={8}>
-            <Input
-              onChange={(e) => onchange(e)}
-              value={email}
-              type="email"
-              placeholder="Email Address"
-              name="email"
-            />
-          </Col>
+          <Input
+            onChange={(e) => onchange(e)}
+            value={email}
+            type="email"
+            placeholder="Email Address"
+            name="email"
+          />
         </FormGroup>
         <FormGroup row className="justify-content-md-center">
-          <Col md={8}>
-            <Input
-              onChange={(e) => onchange(e)}
-              value={password}
-              type="password"
-              placeholder="Password"
-              name="password"
-            />
-          </Col>
+          <Input
+            onChange={(e) => onchange(e)}
+            value={password}
+            type="password"
+            placeholder="Password"
+            name="password"
+          />
         </FormGroup>
         <FormGroup row className="justify-content-md-center">
-          <Col md={8}>
-            <Button type="submit" color="primary">
-              Login
-            </Button>
-          </Col>
+          <Button type="submit" color="primary">
+            Login
+          </Button>
         </FormGroup>
       </Form>
       <p className="my-1">

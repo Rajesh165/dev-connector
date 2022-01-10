@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import baseURL from "./baseUrl";
 import {
   AUTH_ERROR,
   CLEAR_PROFILE,
@@ -16,7 +16,7 @@ import { setAlert } from "./alert";
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) setAuthToken(localStorage.token);
   try {
-    const res = await axios.get("http://localhost:5000/api/auth");
+    const res = await axios.get(baseURL + "/auth");
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -38,11 +38,7 @@ export const register =
     };
     const body = JSON.stringify({ name, email, password });
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/users",
-        body,
-        config
-      );
+      const res = await axios.post(baseURL + "/users", body, config);
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data,
@@ -69,11 +65,7 @@ export const login =
     };
     const body = JSON.stringify({ email, password });
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth",
-        body,
-        config
-      );
+      const res = await axios.post(baseURL + "/auth", body, config);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,
