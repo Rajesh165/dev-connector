@@ -3,6 +3,7 @@ const { check, validationResult } = require("express-validator");
 const auth = require("../../middelware/auth");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
+const Post = require("../../models/Post");
 const router = express.Router();
 
 // @route get api/profile/me
@@ -74,7 +75,7 @@ router.post(
     try {
       let profile = await Profile.findOne({ user: req.user.id });
       if (profile) {
-        profile = await profile.findByIdAndUpdate(
+        profile = await Profile.findOneAndUpdate(
           { user: req.user.id },
           { $set: profileFields },
           { new: true }
@@ -88,7 +89,6 @@ router.post(
       console.log(err.message);
       res.status(500).send("server error");
     }
-    res.send("hello");
   }
 );
 
@@ -127,7 +127,9 @@ router.get("/user/:user_id", async (req, res) => {
 //------------delete user profile----------
 
 router.delete("/", auth, async (req, res) => {
+  console.log("deleting profile");
   try {
+    await Post.deleteMany({ user: req.user.id });
     await Profile.findOneAndRemove({ user: req.user.id });
     await User.findOneAndRemove({ _id: req.user.id });
     res.send("user deleted");
@@ -148,7 +150,8 @@ router.put(
   ],
   async (req, res) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json({ errors: errors });
+    if (!errors.isEmpty())
+      return res.status(400).json({ errors: errors.array() });
     const { title, company, location, from, to, current, description } =
       req.body;
     const newExp = {

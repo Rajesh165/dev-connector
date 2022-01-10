@@ -99,11 +99,10 @@ router.put("/unlikes/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     // check if post already liked
-    if (
-      post.likes.filter((like) => like.user.toString() === req.user.id)
-        .length == 0
-    )
+    // console.log(post);
+    if (post.likes.filter((like) => like.user === req.user.id).length === 0) {
       return res.status(500).json({ msg: "post not liked yet" });
+    }
     const remIndex = post.likes
       .map((like) => like.user.toString())
       .indexOf(req.user.id);
